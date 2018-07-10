@@ -1,16 +1,16 @@
 <?php
 	class db {
 		//host
-		private $host = '192.185.209.81';
+		private $host = 'localhost';
 
 		//usuario
-		private $usuario = 'guima203_adm';
+		private $usuario = 'root';
 
 		//senha
-		private $senha = 'Guima#2018';
+		private $senha = '';
 
 		//banco de dados
-		private $database = 'guima203_versaty';
+		private $database = 'twitter_clone';
 
 		public function conecta_mysql(){
 

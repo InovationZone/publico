@@ -9,50 +9,57 @@
 	$objDb = new db();
 	$link  = $objDb->conecta_mysql();
 
-	//verificar se o usuário já existe
 
+	//variaveis responsaveis de verificar se o usuario ou email existem
+	$usuario_existe = false;
+	$email_existe = false;
+
+
+	//verificar se o usuario ja existe
 	$sql = "select * from usuarios where usuario = '$usuario' ";
-	if($resultado_id = mysqli_query($link, $sql)) {
+	if($resultado_id = mysqli_query($link,$sql)) {
+		$dados = mysqli_fetch_array($resultado_id);
+	
 
-		 $dados_usuario = mysqli_fetch_array($resultado_id);
-
-		 if(isset($dados_usuario['usuario'])){
-		 	echo 'Usuario já cadastrado';
-
-		 } else {
-		 	echo 'Usuário não cadastrado';
-
-		 }
-
-		 var_dump($dados_usuario);
-
+		if(isset($dados['usuario'])){
+			$usuario_existe = true;
+		}
 	} else {
-		echo 'Erro ao tentar localizar o registro de usuário';
+		Echo 'erro ao tentar localizar o registro';
 	}
+	
 
-	//verificar se o e-mail já existe
-
+	//verificar se o email ja existe
 	$sql = "select * from usuarios where email = '$email' ";
-	if($resultado_id = mysqli_query($link, $sql)) {
+	if($resultado_id = mysqli_query($link,$sql)) {
+		$dados = mysqli_fetch_array($resultado_id);
 
-		 $dados_email = mysqli_fetch_array($resultado_id);
-
-		 if(isset($dados_email['usuario'])){
-		 	echo 'E-mail já cadastrado';
-
-		 } else {
-		 	echo 'E-mail não cadastrado';
-
-		 }
-
-		 var_dump($dados_email);
-
+		if(isset($dados['email'])){
+			$email_existe = true;
+		}
 	} else {
-		echo 'Erro ao tentar localizar o registro de usuário';
+		Echo 'erro ao tentar localizar o registro';
+		
 	}
 
-	die();
+	if($usuario_existe || $email_existe){
 
+		//concatena um parametro para tratar o erro de login
+		$retorno_get = '';
+
+		if($usuario_existe) {
+			$retorno_get.= "erro_usuario=1&";
+		}
+
+		if($email_existe) {
+			$retorno_get.= "erro_email=1&";
+		}
+		header('Location: inscrevase.php?'.$retorno_get);
+		//finaliza o script
+		die();
+	}
+
+	
 	$sql = "insert into usuarios(usuario,email,senha) values('$usuario','$email','$senha')";
 
 	//executando a query
@@ -63,8 +70,4 @@
 		echo 'ERRO!';
 		
 	}
-	
-
-
-
 ?>

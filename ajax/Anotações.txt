@@ -1,0 +1,27 @@
+Objeto XMLHttpRequest
+
+
+Métodos 
+
+Open - Passa qual método irá transacionar a informação(post,get), url que deve ser aberta, define se é assincrono ou 
+não. Este é opcional . O default é true.
+(string method, string url, string asycnh)
+
+
+send(string)- Envia a requisicao.
+
+Propriedades - Permite disparar um evento a cada mudança de status
+
+readyState
+0 - Objeto ainda não inicializado, o método open() ainda não foi chamado
+1- Carregando dados, o método send() ainda não foi chamado.
+2 - Dados carregados, o método send() ainda não chamado, mas os cabecalhos de resposta http já estão disponíveis
+3- Modo interativo, a propriedade responseText já contém dados parciais
+4- Operação concluída.
+
+
+status
+
+200 - ok
+505 - erro interno do servidor
+404 - documento não encontrado

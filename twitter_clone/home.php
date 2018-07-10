@@ -21,6 +21,53 @@
 
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+		<script type="text/javascript">
+
+			$(document).ready( function(){
+
+				//associar o evento de click ao botao
+				//#btn_tweet é pego quando o botao é clicado.
+				$('#btn_tweet').click( function(){
+				
+
+					//verifico se o campo não está vazio
+					if($('#texto_tweet').val().length > 0){
+						//realizando uma requisicao assinc. com o ajax
+						$.ajax({
+							url: 'inclui_tweet.php',
+							method: 'post',
+							//serializo um formulário pelo ID em JSON
+							data: $('#form_tweet').serialize(),
+							success: function(data) {
+								alert('Tweet incluido com sucesso');
+								$('#texto_tweet').val('');
+								atualizaTweet();
+							}
+
+						});
+					}
+
+				});
+
+				function atualizaTweet(){
+					//carregar tweets
+
+					$.ajax({
+						url: 'get_tweet.php',
+						success: function(data) {
+							$('#tweets').html(data);
+							
+						}
+
+					});
+				}
+					//executa a funcao para que ela funcione
+					atualizaTweet();
+
+			});
+
+		</script>
 	
 	</head>
 
@@ -49,24 +96,53 @@
 
 
 	    <div class="container">
-	    	
-	    	<br /><br />
+	    	<div class="col-md-3">
+	    		<!--classe painel-->
+	    		<div class="panel panel-default">
+	    			<div class="panel-body">
+	    				<h4><?= $_SESSION['usuario'] ?></h4>
 
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-	    		Usuário autenticado!
-	    		<br/>
-	    		<?= $_SESSION['usuario'] ?>
-	    		<br/>
-	    		<?= $_SESSION['email'] ?>
+	    				<hr />
+	    				<div class="col-md-6">
+	    					TWEETS <br /> 1
+	    				</div>
+	    				<div class="col-md-6">
+	    					SEGUIDORES <br /> 1		
+	    				</div>
+	    			
+	    			</div>		
+	    		</div>
+	    	</div>
+
+
+	    	<div class="col-md-6">
+	    		<div class="panel panel-default">
+	    			<div class="panel-body">
+		    			<form id="form_tweet" class="input-group">
+		    				<input type="text" id="texto_tweet" name="texto_tweet" class="form-control" placeholder="O que está acontecendo agora?" maxlength="140" />
+		    				<span class="input-group-btn">
+		    					<button class="btn btn-default"  id="btn_tweet" type="button">Tweet</button>
+		    				</span>
+		    			</form>
+		    		</div>
+	    		</div>
+
+	    		<div id="tweets" class="list-group"></div>	
 			</div>
-			<div class="col-md-4"></div>
+				
 
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
+			<div class="col-md-3">
+				<div class="panel panel-default">
+					<div class = "panel-body">
+						<h4><a href="#">Procurar por pessoas</a></h4>
+
+					</div>
+				</div>
+				
+
+			</div>
+
+			
 
 		</div>
 
