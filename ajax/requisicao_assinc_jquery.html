@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Ajax - Jquery </title>
+		
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		
+		<script	src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+		
+			//Só quando o documento estiver pronto
+			$(document).ready(function() {
+				//pego o click do botao
+				$('.btn_carrega_conteudo').click(function() {
+					//preeencho a variavel com o id que tem o nome da pagina
+					var carrega_url = this.id;
+					//concateno com o restante do nome da pagina
+					carrega_url = carrega_url + '_conteudo.html';
+				   
+				   //metodo ajax
+					$.ajax({
+						//envio a url
+						url: carrega_url,
+						
+						//se foi com sucesso
+						//no data vem o retorno, utilizo ele como parametro da minha funcao
+						success: function(data){
+							//atribuo meu parametro a div conteudo
+							$('#div_conteudo').html(data);
+						},
+						
+						//antes de ser enviado
+						beforeSend: function(){
+							//configurando o gif de carregamento
+							$('#loader').css({display:"block"});
+						
+						
+						},
+						
+						//completo
+						complete: function(){
+							//retirando o gif
+							$('#loader').css({display:"none"});
+						
+						}
+					
+					});
+				
+				});
+			
+			});
+		</script>
+
+	
+	</head>
+
+	<body>
+
+		<!-- Static navbar -->
+	    <nav class="navbar navbar-default navbar-static-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	        	<h3>Requisições síncronas e assíncronas</h3>
+	        </div>
+	      </div>
+	    </nav>
+
+
+	    <div class="container">
+
+	    	<div class="row">
+	    		<div class="col-md-4 center"></div>
+	    		<div class="col-md-4 center">
+	    			<a href="#" class="btn btn-primary btn_carrega_conteudo" id="pagina_1" >Página 1</a>
+	    			<a href="#" class="btn btn-primary btn_carrega_conteudo" id="pagina_2" >Página 2</a>
+	    			<a href="#" class="btn btn-primary btn_carrega_conteudo" id="pagina_3" >Página 3</a>
+	    		</div>
+	    		<div class="col-md-4 center"></div>
+	    	</div>
+	    	
+	    	<br />
+	    	<div class="row">
+		    	<div class="col-md-1"></div>
+
+		    	<div class="col-md-10 " id="div_conteudo">
+					<center><img src="loader.gif" style="display:none" id="loader"></center>
+		    		
+		    	</div>
+		    		
+				<div class="col-md-1"></div>
+			</div>
+
+		</div>	
+	</body>
+</html>
