@@ -1,6 +1,6 @@
 <?php
 	//Coloco em arrays exemplos de código de Filmes
-	//selecionei uma quantidade fixa para testar
+	
 	$IdFilmes = array();
 	$IdFilmes[0] = "tt0108037";
 	$IdFilmes[1] = "tt0974015";
