@@ -1,0 +1,252 @@
+/*
+*
+*
+* CSS - JOÃO PAULO
+*/
+
+/*================== LAYOUT ====================*/
+html, body, .capa {
+	height:100%;
+
+	/*Só exibirá uma barra de rolagem quando necessário*/
+	overflow: auto;
+}
+
+body {
+	background: 
+				linear-gradient(50deg,#000000,#000000);
+
+	background-attachment: fixed;	
+	font-family: Helvetica,arial,sans-serif;
+
+	overflow-x:hidden; /*esconde a barra horizontal do navegador*/
+
+}
+
+
+
+/*-- Barra de navegação --*/
+
+.img-logo{
+	height: 40px;
+	width: 132px; 
+	display: block;
+	/*svg é um formato de img que se adapta a diversos tamanhos de dispositivos*/
+	background: url('imagens/logo.svg') no-repeat;
+	background-size: contain;
+	color: transparent;
+}
+
+	nav.navbar-transparente {
+		padding: 15px 0px;
+		background: rgba(0,0,0,0.6);
+		border: none;
+	}
+
+.nav-brand {
+	padding: 5px 15px;
+}
+
+.divisor{
+	width: 1px;
+	height: 16px;
+	background: white;
+	margin: 16px 10px;
+}
+
+/*Muda a cor da fonte do menu*/
+.navbar-inverse .navbar-nav>li>a, footer .nav a {
+    color: white;
+}
+
+
+/*Muda a cor da letra do menu, quando passar o mouse em cima*/
+
+.navbar-inverse .navbar-nav>li>a:hover, footer .nav a:hover {
+    color: #9bf0e1;
+    backgroundund: none;
+}
+
+/*-- Imagem de capa --*/
+
+/*display: table - altera o comportamento para como se fosse uma tabela;*/
+.capa{
+	display: table;
+	width: 100%;
+
+}
+
+/*display: table-cell - altera o comportamento para como se fosse uma celula de uma tabela;*/
+/*Muda texto da capa*/
+.texto-capa {
+	text-align: center;
+	color: white;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+
+
+/*--  secao Servicos --*/
+
+#servicos {
+	background: white;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	margin-bottom: 100px;
+}
+
+.albuns {
+	padding: 10px 0px 10px 0px;
+}
+
+/*--  secao recursos --*/
+#recursos {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: white;
+}
+
+.rotacionar {
+	-ms-transform: rotate(30deg) ;
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	padding-left: 20px;
+}
+
+
+/*--  footer --*/
+
+footer{
+	background: #ffff;
+	padding: 50px 0px 20px 0px;
+	position: relative;
+}
+
+
+/* ======================= Tipografia ============== */
+
+/*formatando o h3*/
+
+h1 {
+	font-weight: 900;
+	letter-spacing: -0.05em; /*diminui o espaço de distância das letras*/
+	margin-bottom:50px;
+}
+
+/*media queries */
+
+@media screen and (max-width: 767px) {
+	h1 {
+		font-size: 50px;
+	}
+
+	.btn-custom {
+		margin: 10px 15px;
+
+	}
+
+}
+
+
+
+@media screen and (min-width: 992px) {
+	h1 {
+		font-size: 80px;
+	}
+	
+
+}
+
+
+@media screen and (min-width: 1200px) {
+	h1 {
+		font-size: 100px;
+	}
+
+/*fim media queries */
+}
+
+h2 {
+	font-size: 50px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
+
+h3 {
+	font-size: 35px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+}
+
+h4 {	
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: -0.04em;
+	color: #808080;
+}
+
+h4:hover {
+	color: #000000;
+	
+}
+
+h5 {
+	color: bold;
+}
+
+#rodape h4 {
+	color: #919496;
+	font-size: 12px;
+	text-transform: uppercase;
+
+}
+
+.item-rede-social {
+	float: right;
+}	
+
+
+/*formatando  h2 e h3 apenas do id serviços*/
+#servicos h2, #servicos h3{
+	color: #7c25f8;
+}
+
+
+
+#recursos h3{
+	color: #9bf0e1;
+}
+
+
+
+/*efeito zoom*/
+.zoom {
+	overflow: hidden;
+}
+
+.zoom img {
+	 max-width: 100%;
+    -moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.zoom:hover img{
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+
+}
+
+#img_margem{
+    padding: 5px 20px 0 5px;
+    float: left;
+    margin-bottom: -4px;
+}
+
+
+
+
+
