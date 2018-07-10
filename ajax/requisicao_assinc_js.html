@@ -3,52 +3,55 @@
 	<head>
 		<meta charset="UTF-8">
 
-		<title>Ajax com Js Puro</title>
+		<title>Ajax - JsPuro </title>
 		
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		
-		<script type="text/javascript">
-				var httpRequest;
-				
-				function FazerRequisicao(url,destino){
-					if(window.XMLHttpRequest){
-						httpRequest = new XMLHttpRequest();
-					} else if(window.ActiveXObject){
+
+		<script type = "text/javascript">
+
+			var httpRequest;
+
+			function fazerRequisicao(url , destino){
+				document.getElementById(destino).innerHTML = '<center><img src="loader.gif"></center>';
+				if(window.XMLHttpRequest){ 
+					httpRequest = new XMLHttpRequest();
+				} else if(window.ActiveXObject){
+				  	try{
+						httpRequest = new ActiveXObject("Msxm12.XMLTTP");
+					} catch(e){
 						try {
-							
-							httpRequest = new ActiveXObject("Msxm12.XMLTTP");
+							httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
 						} catch(e){
-							try	{
-								httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-							} catch(e) {
-								alert("impossivel instanciar o objeto xmlhttprequest");
-							
-							}	
+								alert('Erro');
 						}
-						
 					}
-					
-					if(!httpRequest){
-						alert("erro ao instanciar o objeto xmlhttprequest");
-						return false;
-					}
-					
-					httpRequest.onreadystatechange = situacaoRequisicao;
-					
-					
-					httpRequest.open('GET',url);
-					httpRequest.send();
-						
+				}
+			
+				
+				if(!httpRequest){
+					alert("Erro instancia XMLHttpRequest");
+					return false;
 				}
 				
-				function situacaoRequisicao(){
-					if(httpRequest.readyState == 1) {
-						alert("Requisição será feita em segundos");
+				httpRequest.onreadystatechange = situacaoRequisicao;
+				
+				httpRequest.open('GET', url);
+				httpRequest.send();
+	
+			}
+			
+			function situacaoRequisicao(){
+				//Acompanha a requisicao no estado 4(operacaçao concluida) e status 200(ok)
+				if(httpRequest.readyState == 4){
+					if(httpRequest.status == 200){
+						//traz o conteúdo de texto dentro da div
+						document.getElementById('div_conteudo').innerHTML = httpRequest.responseText;
+						
 					}
 				}
-		
-	
+			}
+			
 		</script>
 	
 	</head>
@@ -70,9 +73,9 @@
 	    	<div class="row">
 	    		<div class="col-md-4 center"></div>
 	    		<div class="col-md-4 center">
-	    			<a href="#" class="btn btn-primary" onclick="FazerRequisicao('pagina_1_conteudo.html','div_conteudo')">Página 1</a>
-	    			<a href="#" class="btn btn-primary" onclick="FazerRequisicao('pagina_2_conteudo.html','div_conteudo')">Página 2</a>
-	    			<a href="#" class="btn btn-primary" onclick="FazerRequisicao('pagina_3_conteudo.html','div_conteudo')">Página 3</a>
+	    			<a href="#" class="btn btn-primary" onclick="fazerRequisicao('pagina_1_conteudo.html','div_conteudo')">Página 1</a>
+	    			<a href="#" class="btn btn-primary" onclick="fazerRequisicao('pagina_2_conteudo.html','div_conteudo')">Página 2</a>
+	    			<a href="#" class="btn btn-primary" onclick="fazerRequisicao('pagina_3_conteudo.html','div_conteudo')">Página 3</a>
 	    		</div>
 	    		<div class="col-md-4 center"></div>
 	    	</div>
@@ -90,4 +93,4 @@
 
 		</div>	
 	</body>
-</html>	
+</html>
