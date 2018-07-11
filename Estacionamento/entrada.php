@@ -39,14 +39,14 @@
 									?>
 								
 									<label for="exampleInputEmail1">Tipo de veículo</label>
-									<select required class="form-control"  name="cmbtipo" value="<?php$id = $linha['IDTIPOVEICULO'];?>">
+									<select required class="form-control"  name="cmbtipo">
 										<option value="">Selecione uma opção</option>
 										<?php
 										
 											while($linha = mysqli_fetch_array($resultado)){
 												$id = $linha['IDTIPOVEICULO'];
 												$tipo = $linha['TIP_NOME'];
-												echo "<option>$tipo</option>";
+												echo "<option value='$id'>$tipo</option>";
 											}
 											
 										?>
