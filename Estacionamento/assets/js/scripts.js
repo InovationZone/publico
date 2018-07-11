@@ -36,6 +36,23 @@ $(document).ready(function(){
 		window.location.reload();
 	});
 	
+	//entrada no estacionamento
+	$("#btnentrada").click(function(){
+		$.ajax({
+			url: 'insere_entrada.php',
+			method:'post',
+			data: $('#frmEntrada').serialize(),
+			success: function(data){
+				alert("entrada feita com sucesso!");
+				
+			}
+			
+			
+			
+		});
+		
+	});
+	
 
 });
 
