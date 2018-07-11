@@ -14,6 +14,9 @@
 		<!--Jquery-->
 		<script src="assets/js/jquery-2.2.4.min.js"></script>
 		
+		<!--Meu js-->
+		<script src="assets/js/scripts.js"></script>
+		
 	
 	</head><!--Fim head-->
 	
@@ -30,7 +33,7 @@
 				<img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
 				<h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
 				<label class="sr-only" required>Usuário</label>
-				<input  class="form-control" placeholder="Digite o usuário" name="txt_usuario" required autofocus>
+				<input  class="form-control" id="inputusuario" placeholder="Digite o usuário" name="txt_usuario" required autofocus>
 				<label for="inputPassword" class="sr-only">Senha</label>
 				<input type="password" id="inputPassword" class="form-control" name="txt_senha" placeholder="Digite a Senha" required>
 				<div class="checkbox mb-3">

@@ -62,19 +62,19 @@
 
             <ul class="nav" id="menu">
                 <li class="active">
-                    <a href="inicio.php" id="inicio">
+                    <a class ="url_carregamento" href="#" id="inicio">
                         <i class="pe-7s-graph"></i>
                         <p>Início</p>
                     </a>
                 </li>
                 <li>
-                    <a href="entrada.php">
+                    <a class ="url_carregamento" href="#" id="entrada">
                         <i class="pe-7s-user"></i>
                         <p>Entrada</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a class ="url_carregamento" href="table.html">
                         <i class="pe-7s-note2"></i>
                         <p>Table List</p>
                     </a>
@@ -187,6 +187,7 @@
 
        <!-- conteudo -->
 							<div id="content"> 
+								<center><img src="imagens/loader.gif" style="display:none" id="loader"></img></center>
 										
 										<div class="container-fluid">
                 <div class="row">
