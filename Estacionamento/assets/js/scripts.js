@@ -36,7 +36,12 @@ $(document).ready(function(){
 		window.location.reload();
 	});
 	
-	//entrada no estacionamento
+	
+
+});
+
+//entrada no estacionamento
+$(document).ready(function(){
 	$("#btnentrada").click(function(){
 		$.ajax({
 			url: 'insere_entrada.php',
@@ -45,16 +50,21 @@ $(document).ready(function(){
 			success: function(data){
 				alert("entrada feita com sucesso!");
 				
-			}
+			},
 			
+			beforeSend: function(){
+				$("#loader").css({display:"block"});	
+			},
 			
-			
+			complete: function(){
+				$("#loader").css({display:"none"});
+				
+			}	
 		});
 		
 	});
-	
-
 });
+	
 
 
 

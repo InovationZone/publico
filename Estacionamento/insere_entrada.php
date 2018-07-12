@@ -1,30 +1,26 @@
 <?php
-	session_start();
+	//verifica se as sessions estão preenchidas
+	include_once("status_logado.php");
+	
+	
 	require_once('db.class.php');
 
-
-	if(!isset($_SESSION['usuario'])){
-		header('Location: index.php?erro=1');
-	}
 
 	$placa = $_POST['txtplaca'];
 	$tipo = $_POST['cmbtipo'];
 	$marca = $_POST['txtmarca'];
+	$modelo = $_POST['txtmodelo'];
+	$obs  = $_POST['txtobs'];
+	$cor  = $_POST['txtcor'];
+	
 
-	$id_usuario = $_SESSION['id_usuario'];
-
-	if ($texto_tweet == '' || $id_usuario == '') {
-		die();
-
-	}
-		$objDb = new db();
-		$link  = $objDb->conecta_mysql();
-
-		$sql = "insert into tweet(id_usuario, tweet) values('$id_usuario','$texto_tweet')";
-
-		
-		mysqli_query($link,$sql);
+	$objDb = new db();
+	$link = $objDb->conecta_mysql();
+	
+	$sql = "INSERT INTO TBL_COBRANCA (COB_PLACA,COB_MARCA,COB_MODELO,COB_COR,COB_OBS,ID_TIPO) VALUES('$placa','$marca','$modelo','$cor','$obs',$tipo)";  	
+	mysqli_query($link,$sql);
+	
+?>
 
 	
 
-?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Jul-2018 às 02:59
+-- Generation Time: 12-Jul-2018 às 02:10
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -69,21 +69,30 @@ INSERT INTO `tbl_cidade` (`IDCIDADE`, `CID_NOME`, `ID_ESTADO`) VALUES
 CREATE TABLE `tbl_cobranca` (
   `IDCOBRANCA` int(11) NOT NULL,
   `COB_PLACA` varchar(50) NOT NULL,
+  `COB_MARCA` varchar(100) NOT NULL,
+  `COB_MODELO` varchar(100) NOT NULL,
+  `COB_COR` varchar(50) NOT NULL,
   `COB_DATA_ENT` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `COB_DATA_SAI` datetime DEFAULT NULL,
   `COB_VALOR` decimal(10,2) DEFAULT NULL,
   `COB_OBS` varchar(150) DEFAULT NULL,
   `ID_TIPOCOBRANCA` int(11) DEFAULT NULL,
   `ID_FORMAPGTO` int(11) DEFAULT NULL,
-  `ID_MENSALISTA` int(11) DEFAULT NULL
+  `ID_MENSALISTA` int(11) DEFAULT NULL,
+  `ID_TIPO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tbl_cobranca`
 --
 
-INSERT INTO `tbl_cobranca` (`IDCOBRANCA`, `COB_PLACA`, `COB_DATA_ENT`, `COB_DATA_SAI`, `COB_VALOR`, `COB_OBS`, `ID_TIPOCOBRANCA`, `ID_FORMAPGTO`, `ID_MENSALISTA`) VALUES
-(1, 'abc-1234', '2018-07-08 17:06:59', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tbl_cobranca` (`IDCOBRANCA`, `COB_PLACA`, `COB_MARCA`, `COB_MODELO`, `COB_COR`, `COB_DATA_ENT`, `COB_DATA_SAI`, `COB_VALOR`, `COB_OBS`, `ID_TIPOCOBRANCA`, `ID_FORMAPGTO`, `ID_MENSALISTA`, `ID_TIPO`) VALUES
+(2, 'abc-1234', 'PEUGEOT', '207', '', '2018-07-11 23:33:37', NULL, NULL, 'Carro do joão', NULL, NULL, NULL, 1),
+(3, 'ens-9758', 'Peugeot', '207', '', '2018-07-11 23:38:04', NULL, NULL, 'ArranhÃ£o na parte frontal', NULL, NULL, NULL, 1),
+(4, 'ens-9758', 'Peugeot', '207', '', '2018-07-11 23:38:04', NULL, NULL, 'ArranhÃ£o na parte frontal', NULL, NULL, NULL, 1),
+(5, 'abc-1234', 'honda', 'hornet', '', '2018-07-11 23:45:37', NULL, NULL, 'hornet laranja', NULL, NULL, NULL, 2),
+(6, 'DBA-4321', 'TESTE', 'TESTE', '', '2018-07-11 23:49:45', NULL, NULL, 'TESTE', NULL, NULL, NULL, 1),
+(7, 'aaaa', 'aaa', 'aaa', 'aaa', '2018-07-11 23:51:42', NULL, NULL, 'aaa', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -336,7 +345,8 @@ ALTER TABLE `tbl_cobranca`
   ADD PRIMARY KEY (`IDCOBRANCA`),
   ADD KEY `ID_FORMAPGTO` (`ID_FORMAPGTO`),
   ADD KEY `ID_TIPOCOBRANCA` (`ID_TIPOCOBRANCA`),
-  ADD KEY `ID_MENSALISTA` (`ID_MENSALISTA`);
+  ADD KEY `ID_MENSALISTA` (`ID_MENSALISTA`),
+  ADD KEY `FK_COBRANCA_TIPO_VEICULO` (`ID_TIPO`);
 
 --
 -- Indexes for table `tbl_cor`
@@ -432,7 +442,7 @@ ALTER TABLE `tbl_cidade`
 -- AUTO_INCREMENT for table `tbl_cobranca`
 --
 ALTER TABLE `tbl_cobranca`
-  MODIFY `IDCOBRANCA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDCOBRANCA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_cor`
@@ -514,6 +524,7 @@ ALTER TABLE `tbl_cidade`
 -- Limitadores para a tabela `tbl_cobranca`
 --
 ALTER TABLE `tbl_cobranca`
+  ADD CONSTRAINT `FK_COBRANCA_TIPO_VEICULO` FOREIGN KEY (`ID_TIPO`) REFERENCES `tbl_tipo_veiculo` (`IDTIPOVEICULO`),
   ADD CONSTRAINT `tbl_cobranca_ibfk_1` FOREIGN KEY (`ID_FORMAPGTO`) REFERENCES `tbl_forma_pgto` (`IDFORMAPGTO`),
   ADD CONSTRAINT `tbl_cobranca_ibfk_2` FOREIGN KEY (`ID_TIPOCOBRANCA`) REFERENCES `tbl_tipo_cobranca` (`IDTIPOCOBRANCA`),
   ADD CONSTRAINT `tbl_cobranca_ibfk_3` FOREIGN KEY (`ID_MENSALISTA`) REFERENCES `tbl_mensalista` (`IDMENSALISTA`);

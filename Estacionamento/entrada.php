@@ -66,10 +66,16 @@
 									<input type="text" class="form-control" required placeholder="Digite a marca" name="txtmarca">
 								</div>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>Modelo</label>
 									<input required type="text" class="form-control"  placeholder="Digite o modelo do veículo" name="txtmodelo">
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label>Cor</label>
+									<input required type="text" class="form-control"  placeholder="Digite a cor do veículo" name="txtcor">
 								</div>
 							</div>
 							
