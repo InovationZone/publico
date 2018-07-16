@@ -5,7 +5,7 @@
 	
 ?>
 <div id="content"> 
-	conteudo_incio															
+																
 </div><!-- /conteudo -->
 
 	<script src="assets/js/scripts.js"></script>
