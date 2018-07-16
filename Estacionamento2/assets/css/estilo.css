@@ -1,0 +1,205 @@
+/*
+	CSS - DESENVOLVIDO POR JOÃO PAULO 
+*/
+
+
+/* --- FORM LOGIN --*/
+
+*{
+	padding: 0;
+	margin: 0;
+	
+}
+
+
+html,
+body {
+  height: 100%;
+ 
+}
+
+.margem_topo {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/*Barra superior*/
+#topo {
+	background-color: #5b859a	;
+	width: 100%;
+	height: 50px;
+}
+
+.img-logo {
+	float: right;
+	padding-top:10px;
+	padding-right: 40px;
+	
+}
+
+/*---------------------------*/
+
+
+
+/*icone menu*/
+.menu-icone{
+	position:fixed;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 5px;
+	width: 40px;
+	height: 40px;
+	background-color: #5b8596;
+	color: #fff;
+	/*adiciona o cursor de click do mouse*/
+	cursor: pointer;
+	transition: all.4s;
+	left:10px;
+	top: 5px;
+	text-align: center;
+}
+
+.menu-icone:hover{
+		background-color: #fff;
+	
+}
+
+
+
+
+/*-----------*/
+
+
+/*Barra lateral*/
+.sidebar {
+	padding-top: 10px;
+	height: 100%;
+	background-color: #222;
+	/*--trasicao para tudo de 0.2*/
+	transition: all .2s;
+}
+
+/*retira o ponto que fica do lado esquerdo do item do menu*/
+ul {
+	list-style: none;	
+}
+
+
+ul li a {
+	/*Um bloco contém um espaço em branco tanto em cima como embaixo e não permite outros elementos HTML ao lado*/
+	display: block;
+	font-size: 15px;
+	font-family: arial;
+	padding: 10px;
+	border-bottom: solid 1px #000;	
+	transition: all .2s;
+	color: #ccc;
+}
+
+.formata_link:hover{
+	text-decoration: none;
+	background-color: #5b859a;
+	
+	
+}
+
+ul li span {
+	float: right;
+	padding-right: 10px;
+
+}
+
+.voltar {
+	margin-top: 20px;
+	background-color: #111;
+	text-decoration: none;
+	border-left: 5px solid #444;
+}
+
+.submenu {	
+	background-color: #111;
+	
+}
+
+
+
+
+/*--------------------------------*/
+
+
+/*separador*/
+.separador {
+	border-bottom: 1px solid #000;
+	padding-top: 100px;
+	
+	
+}
+/*-----------*/
+
+
+/*Sub-menus*/
+#contato {
+	width: 200px;
+	margin-left: -500px;
+	
+}
+
+#fluxoES {
+	width: 200px;
+	margin-left: -500px;
+}
+/*-----------*/
+
+/*loader*/
+.loader{
+	position: absolute;
+	top:250px;
+	left:40%;
+	display: none;
+
+}
+
+/*------*/
+
+
+
+
+
+
+
+
