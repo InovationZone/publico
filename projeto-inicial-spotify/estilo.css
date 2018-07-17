@@ -13,8 +13,9 @@ html, body, .capa {
 }
 
 body {
-	background: 
-				linear-gradient(50deg,#000000,#000000);
+	background: url('imagens/capa.png'),
+				url('imagens/ruido.png'),
+				linear-gradient(50deg,#ff4169,#7c26f8);
 
 	background-attachment: fixed;	
 	font-family: Helvetica,arial,sans-serif;
@@ -229,6 +230,4 @@ h3 {
 #recursos h3{
 	color: #9bf0e1;
 }
-
-
 
