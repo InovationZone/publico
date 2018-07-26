@@ -87,6 +87,39 @@ $(document).ready(function(){
 			//-------------------------------------//*/
 			
 			
+			$("#placa").blur(function() {
+				var url = 'consulta_tip_cli.php';
+				var placa = $("#placa").val();
+				
+				
+				$.ajax ({
+					url: url,
+					data: {'placa': placa},
+					method: 'POST',
+					success: function(data) {
+						alert(data);
+					},
+					
+					beforeSend: function(){
+						$("#loader").css({display:"block"});
+					},
+					
+					complete: function(){
+						$("#loader").css({display:"none"});
+					}
+					
+				
+				
+				});
+				
+				
+			});
+			
+			
+			
+			
+			
+			
 		
 	
 	

@@ -2,6 +2,7 @@
 	date_default_timezone_set('America/Sao_Paulo');
 	
 	require_once('db.class.php');
+	session_start();
 	
 ?>
 <div id="content"> 
@@ -17,14 +18,14 @@
 						<div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
-									<label>Empresa</label>
-									<input type="text" class="form-control" disabled placeholder="Company" value="Estacionamento">
+									<label>Tipo de cliente</label>
+									<input type="text" class="form-control" disabled  value="<?php if(isset($_SESSION['tipcli'])){echo $_SESSION['tipcli'];}	 ?>">
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 									<label>Placa</label>
-									<input type="text" class="form-control" placeholder="Digite a placa" name="txtplaca" required>
+									<input type="text" id="placa" class="form-control" placeholder="Digite a placa do veículo" name="txtplaca" required>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -82,16 +83,43 @@
 						</div><!--fecha row-->
 
 						<div class="row">
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>Data</label>
 									<input type="text" class="form-control" placeholder="Company" value="<?php echo date('d/m/Y');?>" name="txtdata" readonly>
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label>Hora</label>
 									<input type="text" class="form-control" placeholder="Last Name" value="<?php echo date('H:i:s');?>" name="txthora" readonly>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<?php
+									$sql = "select 	* from tbl_tipo_cobranca";
+									$objDb = new db();
+									$link = $objDb->conecta_mysql();
+									$resultado = mysqli_query($link, $sql);
+									
+								?>
+								<div class="form-group">
+									<label>Tipo de entrada</label>
+									<select type="select" class="form-control" required>
+										<option value="">Selecione o tipo</option>
+										<?php
+											while($linha = mysqli_fetch_array($resultado)) {
+												$idcob = $linha['IDTIPOCOBRANCA'];
+												$tipocob = $linha['TIP_COBRANCA'];
+												echo "<option value='$idcob'>$tipocob</option>";
+												
+											}
+										
+										
+										?>
+										
+											
+									</select>
 								</div>
 							</div>
 						</div><!--fecha row-->
