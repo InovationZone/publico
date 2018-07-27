@@ -46,7 +46,7 @@
 					<li><a href="#" class="formata_link submenu" id="saida">Saída</a></li>
 					<li><a href="#" class="formata_link">Controle de Caixa</a></li>
 					<li><a href="#" class="formata_link" id="submenucad">Cadastros<span>+</span></a></li>
-					<li><a href="#" class="formata_link submenu " id="clientes">Clientes</a></li>
+					<li><a href="#" class="url_carregamento formata_link submenu " id="clientes">Clientes</a></li>
 					<li><a href="#" class="formata_link submenu" id="veiculos">Veículos</a></li>
 					<li><a href="#" class="formata_link">Perfil</a></li>
 					<li><a href="#" class="formata_link">Sinistros</a></li>

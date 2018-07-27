@@ -20,30 +20,69 @@ $(document).ready(function(){
 				$("#loader").css({display:"none"});
 				
 			}
-			
-			
+
 		});
+	});
+	
+	
+	//entrada no estacionamento
+	$("#btnentrada").click(function(){
+		var txtplaca = $("#txtplaca").val();
+	    var cmbtipo = $('#cmbtipo').val();
+		var txtmarca = $("#txtmarca").val();
+		var txtmodelo = $("#txtmodelo").val();
+		var txtcor = $("#txtcor").val();
+		var cmbcobranca = $("#cmbcobranca").val();
+		var txtobs = $("#txtobs").val();
 		
-		
+		$.ajax({
+			url: 'insere_entrada.php',
+			method: 'post',
+			data: {'txtplaca': txtplaca , 'cmbtipo': cmbtipo , 'txtmarca': txtmarca , 'txtmodelo' : txtmodelo , 'txtcor' : txtcor , 
+				'cmbcobranca' : cmbcobranca , 'txtobs' : txtobs},
+			success: function(data){
+				alert(data);
+			}
+		})
 		
 	});
+	
+	//preencher o tipo de cliente apos a placa ser digitada - Tela de entrada
+	$("#txtplaca").blur(function() {
+				var url = 'consulta_tip_cli.php';
+				var txtplaca = $("#txtplaca").val();
+				
+				
+				$.ajax ({
+					url: url,
+					data: {'txtplaca': txtplaca},
+					method: 'POST',
+					success: function(data) {
+					
+						var msg = data;
+						$("#tipo").val(msg);
+					},
+					
+					beforeSend: function(){
+						$("#loader").css({display:"block"});
+					},
+					
+					complete: function(){
+						$("#loader").css({display:"none"});
+					}
+					
+				
+				
+				});
+				
+				
+			});
 
 });
 
 
 $(document).ready(function(){
-	//entrada no estacionamento
-	$("#btnentrada").click(function(){
-		$.ajax({
-			url: 'insere_entrada.php',
-			method: 'post',
-			data: $("#frmEntrada").serialize(),
-			success: function(data){
-				alert(data);
-			}
-		});
-		
-	});
+	
 	
 	
 			//incia a pagina com o icone escondido
@@ -87,33 +126,7 @@ $(document).ready(function(){
 			//-------------------------------------//*/
 			
 			
-			$("#placa").blur(function() {
-				var url = 'consulta_tip_cli.php';
-				var placa = $("#placa").val();
-				
-				
-				$.ajax ({
-					url: url,
-					data: {'placa': placa},
-					method: 'POST',
-					success: function(data) {
-						alert(data);
-					},
-					
-					beforeSend: function(){
-						$("#loader").css({display:"block"});
-					},
-					
-					complete: function(){
-						$("#loader").css({display:"none"});
-					}
-					
-				
-				
-				});
-				
-				
-			});
+			
 			
 			
 			
