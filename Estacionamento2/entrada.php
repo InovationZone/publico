@@ -8,6 +8,15 @@
 	
 ?>
 <div id="content"> 
+	<?php
+		if(isset($teste)){
+			echo $teste;
+		}
+	?>
+	<!--pego a resposta do ajax-->
+	<div id="resposta">
+	
+	</div>
 	<div class="container-fluid">
 		<div class="row">
             <div class="col-md-8">
@@ -28,7 +37,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label>Placa</label>
-									<input type="text" id="txtplaca" class="form-control" placeholder="Digite a placa do veículo" name="txtplaca" required>
+									<input type="text" id="txtplaca" class="form-control" placeholder="AAA-0000" name="txtplaca" required>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -43,7 +52,7 @@
 									?>
 								
 									<label for="exampleInputEmail1">Tipo de veículo</label>
-									<select required class="form-control"  name="cmbtipo" id="cmbtipo"> 
+									<select required class="form-control"  name="cmbtipo" id="id_tipo"> 
 										<option value="">Selecione uma opção</option>
 										<?php
 										
@@ -68,6 +77,16 @@
 								<div class="form-group">
 									<label>Marca</label>
 									<input type="text" class="form-control" required placeholder="Digite a marca" name="txtmarca" id="txtmarca">
+									<div class="caixa" id="caixa">
+										<div class="fundo_txt_marcas">
+												<span class="texto_marcas">Marcas localizadas:</span>
+										</div><!--fecha fundo_txt_marcas-->
+										
+										<div id="marcas_encontradas">
+											
+										</div><!--fecha caixa itens-->
+										
+									</div><!--fecha caixa-->
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -100,7 +119,7 @@
 							</div>
 							<div class="col-md-4">
 								<?php
-									$sql = "select 	* from tbl_tipo_cobranca where idtipocobranca <> 3";
+									$sql = "select 	* from tbl_tipo_cobranca where idtipocobranca <> 2";
 									$objDb = new db();
 									$link = $objDb->conecta_mysql();
 									$resultado = mysqli_query($link, $sql);
@@ -147,5 +166,11 @@
 </div><!-- /conteudo -->
 
 	<script src="assets/js/scripts.js"></script>
+	
+	<!--Api do google para converter e receber json-->
+	<script src="assets/js/jsapi.js"></script>
+	
+	
+	
 
 	

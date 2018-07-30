@@ -6,7 +6,7 @@
 	$placa = $_POST['txtplaca'];
 	
 		//nao permite carcateres especiais
-		if ( !empty( $placa) && preg_match( '/^[\w\n\s]+$/i' , $placa ) ){
+		//if ( !empty( $placa) && preg_match( '/^[\w\n\s]+$/i' , $placa ) ){
 			$tipo = $_POST['cmbtipo'];
 			$marca = $_POST['txtmarca'];
 			$modelo = $_POST['txtmodelo'];
@@ -18,16 +18,16 @@
 	
 			$sql = "INSERT INTO TBL_COBRANCA (COB_PLACA,COB_MARCA,COB_MODELO,COB_COR,COB_OBS,ID_TIPO) VALUES('$placa','$marca','$modelo','$cor','$obs',$tipo)";  
 			if(mysqli_query($link,$sql)) {
-				echo "Dados inseridos com sucesso!";
+				echo "<div class='alert alert-success' id='resposta' role='alert'>Entrada efetuada com sucesso!<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 			}else {
-				echo("Erro na operação, contatar o administrador do sistema.");
+				echo "<div class='alert alert-danger' id='resposta' role='alert'>Erro ao efetuar a entrada. Entrar em contato com o administrador do sistema.<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>";
 			
 			}
 			
-		} else {
-			echo "Só são permitidos letras e números";
+		/*} else {
+			echo "Só são permitidos letras , números";
 			die();
-		}
+		}*/
 
 	
 	

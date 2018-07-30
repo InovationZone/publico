@@ -3,7 +3,7 @@
 		<!--Css-->
 		<link href ="assets/css/estilo.css" rel="stylesheet" type="text/css">
 		<!--Bootstrap-->
-		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 		<!--Jquery-->
 		<script src="assets/js/jquery-2.2.4.min.js"></script>
 		
