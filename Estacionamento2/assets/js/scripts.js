@@ -76,7 +76,6 @@ $(document).ready(function(){
 				var url = 'consulta_tip_cli.php';
 				var txtplaca = $("#txtplaca").val();
 				
-	
 				$.ajax ({
 					url: url,
 					data: {'txtplaca': txtplaca},
@@ -122,13 +121,15 @@ $(document).ready(function(){
 					} 
 				});
 			});*/
-			
+		
+		
 	//pesquisa caixa de marcas
+	
 	$("#txtmarca").keyup(function(){
 		var id_tipo = $('#id_tipo :selected').val();
-		
 		if (id_tipo == "") {
 			$("#resposta").show();
+
 			$("#resposta").html("<div class='alert alert-warning' id='resposta' role='alert'>Preencha o tipo de Veículo<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
 	
 		} 
@@ -165,6 +166,7 @@ $(document).ready(function(){
 			
 	});
 	
+	//pego a marca do carro clicada e atribuo ao txtmarca
 	function PegaValor(){
 		$("#mar_nome").click(function(event){
 			event.preventDefault();

@@ -6,9 +6,10 @@
 	
 	
 	$marca = $_POST["txtmarca"];
+	$id_tipo = $_POST['id_tipo'];
 
 	
-	$sql = "select * from tbl_marca where mar_nome like '%$marca%' order by mar_nome limit 3";	
+	$sql = "select * from tbl_marca where mar_nome like '%$marca%' and id_tipo = $id_tipo order by mar_nome limit 3";	
 	
 	$objDb = new db();
 	$link = $objDb->conecta_mysql();
